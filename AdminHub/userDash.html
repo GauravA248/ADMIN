@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>User— Dashboard</title>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons (optional - used for some UI icons) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/userStyle.css">
+</head>
+
+<body>
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="logo-mark">J</div>
+                <div class="brand-text">Jeevchi</div>
+                <button class="toggle-sidebar" id="sidebarToggle" title="Toggle sidebar">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+            </div>
+
+            <nav class="navlist" aria-label="main navigation">
+                <div class="nav-item active" data-section="dashboard">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-text">Dashboard</div>
+                </div>
+
+                <div class="nav-item" data-bs-toggle="modal" data-section="payments">
+                    <div class="nav-icon">💳</div>
+                    <div class="nav-text">Payment Process</div>
+                </div>
+
+                <div class="nav-item" data-section="history">
+                    <div class="nav-icon">🕒</div>
+                    <div class="nav-text">Transactions</div>
+                </div>
+
+                <div class="nav-item" data-section="attendance">
+                    <div class="nav-icon">📅</div>
+                    <div class="nav-text">Attendance</div>
+                </div>
+            </nav>
+
+            <div class="bottom">
+                <div style="flex:1">
+                    <div style="font-size:12px;color:var(--muted)">Signed in as</div>
+                    <div style="font-weight:700">Anjali Jha</div>
+                </div>
+                <button id="themeBtn" class="theme-switch" title="Toggle theme">
+                    <i class="bi bi-moon-fill" id="themeIcon"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="content-wrap">
+            <header class="topbar">
+                <div class="row">
+                    <button id="sidebarToggleTop" class="btn-ghost" title="Toggle sidebar"><i
+                            class="bi bi-list"></i></button>
+                    <div style="font-weight:700">Dashboard</div>
+                </div>
+
+                <div class="search">
+                    <input id="searchBox" placeholder="Search here...">
+                </div>
+
+                <div class="top-actions">
+                    <button class="btn btn-danger" id="logoutUser">logout</button>
+                    <div class="row" style="gap:6px">
+                        <div class="user-badge row" style="gap:8px;align-items:center">
+                            <div
+                                style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--light-blue),#9ccfff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">
+                                A</div>
+                            <div style="display:flex;flex-direction:column">
+                                <div style="font-weight:700;font-size:14px">Anjali Jha</div>
+                                <div style="font-size:12px;color:var(--muted)">Valet Attendant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main" id="mainContent">
+                <!-- LEFT: Overview + Calendar -->
+                <section>
+                    <div class="card">
+                        <div class="space-between">
+                            <div>
+                                <h3>Welcome, Anjali</h3>
+                                <div class="muted">Good to see you. Here's what's happening today.</div>
+                            </div>
+                        </div>
+
+                        <div style="height:8px"></div>
+
+                        <div class="grid-3" style="margin-top:14px">
+                            <div class="stat">
+                                <div class="num">128</div>
+                                <div class="label">Total Bookings</div>
+                            </div>
+                            <div class="stat">
+                                <div class="num">24</div>
+                                <div class="label">Active Valets</div>
+                            </div>
+                            <div class="stat">
+                                <div class="num">7</div>
+                                <div class="label">Pending Requests</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height:18px"></div>
+
+                    <div class="card">
+                        <div class="space-between">
+                            <!-- Calendar Month + Navigation -->
+                            <div class="row" style="display:flex; align-items:center; text-align: center;">
+                                <button id="prevMonth"
+                                    style="background:none; border:none; color:var(--text-muted); font-size:18px; cursor:pointer;">◀</button>
+                                <div>
+                                    <div style="font-weight:700" id="monthLabel">—</div>
+                                </div>
+                                <button id="nextMonth"
+                                    style="background:none; border:none; color:var(--text-muted); font-size:18px; cursor:pointer;">▶</button>
+                            </div>
+
+                            <!-- Local Date -->
+                            <div class="muted" style="text-align:right;">
+                                <div style="font-weight:700" id="todayDate">—</div>
+                                <div style="font-size:12px;">Local Date</div>
+                            </div>
+                        </div>
+
+                        <!-- Week names -->
+                        <div class="cal-weeknames">
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                        </div>
+
+                        <!-- Calendar grid -->
+                        <div class="calendar" id="calendarGrid" aria-hidden="false"></div>
+
+                        <div style="height:8px"></div>
+                        <div class="muted" style="font-size:13px">Legend: <span style="margin-left:8px">• Present</span>
+                            <span style="margin-left:12px">• Absent</span> <span style="margin-left:12px">• Leave</span>
+                        </div>
+                    </div>
+
+                    <div style="height:18px"></div>
+
+                    <div class="card">
+                        <h3>Recent Transactions</h3>
+                        <div style="height:12px"></div>
+                        <div style="overflow:auto">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Amount (₹)</th>
+                                        <th>Status</th>
+                                        <th>Requested</th>
+                                        <th>Approved</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12,000</td>
+                                        <td><span
+                                                style="padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--yellow),#ffd467);font-weight:700;font-size:12px">Pending</span>
+                                        </td>
+                                        <td>2025-10-10</td>
+                                        <td>—</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>8,500</td>
+                                        <td><span
+                                                style="padding:6px 10px;border-radius:999px;background:var(--blue);color:#fff;font-weight:700;font-size:12px">Approved</span>
+                                        </td>
+                                        <td>2025-09-26</td>
+                                        <td>2025-09-27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>5,000</td>
+                                        <td><span
+                                                style="padding:6px 10px;border-radius:999px;background:var(--orange);color:#fff;font-weight:700;font-size:12px">Processing</span>
+                                        </td>
+                                        <td>2025-09-14</td>
+                                        <td>—</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RIGHT: Announcements + Punch -->
+                <aside class="right-col">
+                    <div class="card announce">
+                        <div class="space-between">
+                            <div>
+                                <h3>Announcement</h3>
+                                <div class="muted">Jeevchi ensures a seamless arrival & departure experience.</div>
+                            </div>
+                            <div class="muted">2</div>
+                        </div>
+                        <div style="height:12px"></div>
+                        <div class="muted">Our valet team is active 24/7 — please ensure timely punches and safety
+                            checks before vehicle handover.</div>
+                    </div>
+
+                    <div class="card text-center">
+                        <div style="margin-bottom:12px">
+                            <h3>Punch In / Out</h3>
+                        </div>
+                        <div class="row" style="justify-content:center">
+                            <button id="punchIn" class="btn">⏱️ Punch In</button>
+                            <button id="punchOut" class="btn ghost" style="margin-left:8px">🚪 Punch Out</button>
+                        </div>
+                        <div style="height:12px"></div>
+                        <div id="lastPunch" class="muted" style="font-size:13px;text-align:center">No active punch</div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Quick Links</h3>
+                        <div style="height:10px"></div>
+                        <div style="display:flex;flex-direction:column;gap:10px">
+                            <button class="btn ghost">Contact Us</button>
+                            <button class="btn ghost">FAQs</button>
+                            <button class="btn ghost">My Profile</button>
+                        </div>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/userDash.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/logout.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JEEVCHI | Cinematic Video Scroll</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+
+    <!-- 🌍 FIRST SECTION (Earth Video) -->
+    <div class="section visible" id="section1">
+        <div class="video-container">
+            <video autoplay muted loop playsinline preload="auto">
+                <source src="images/Earth1.mp4" type="video/mp4">
+                Your browser does not support the HTML5 Video element.
+            </video>
+            <div class="overlay"></div>
+        </div>
+
+        <div class="content">
+            <h1>Welcome To <br> JEEVCHI</h1>
+            <button class="btn-start">
+                <a href="login.html" style="color: #fff;text-decoration: none;">Sign In</a>
+            </button>
+        </div>
+    </div>
+
+    <!-- 🌌 SECOND SECTION (Zoomed Out Animated Video) -->
+    <div class="section" id="section2">
+        <div class="video-container">
+            <video muted playsinline preload="auto">
+                <source src="images/Solar (2).mp4" type="video/mp4">
+                Your browser does not support the HTML5 Video element.
+            </video>
+            <div class="overlay"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
