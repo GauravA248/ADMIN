@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile | Jeevchi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .profile-card {
+            max-width: 700px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+        }
+
+        .profile-card h4 {
+            color: #3f2cc3;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: #3f2cc3;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #2d1b99;
+        }
+
+        .btn-cancel {
+            background-color: #e9ecef;
+            color: #333;
+        }
+
+        .btn-cancel:hover {
+            background-color: #d6d8db;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile-card">
+        <h4><a href="#" onclick="window.location.href='../login.html'; return false;">🏠</a>My Profile</h4>
+        <form id="profileForm">
+
+            <!-- Title Dropdown -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <select id="title" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="Mr">Mr.</option>
+                    <option value="Mrs">Mrs.</option>
+                    <option value="Miss">Miss</option>
+                </select>
+            </div>
+
+            <!-- Full Name -->
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Guardian or Spouse -->
+            <div class="mb-3">
+                <label for="guardianName" class="form-label">Name of Guardian / Spouse</label>
+                <input type="text" id="guardianName" class="form-control" placeholder="Enter guardian or spouse name">
+            </div>
+
+            <!-- Aadhaar -->
+            <div class="mb-3">
+                <label for="aadhaar" class="form-label">Aadhaar Card Number</label>
+                <input type="text" id="aadhaar" maxlength="12" class="form-control" placeholder="Enter 12-digit Aadhaar"
+                    pattern="\d{12}">
+            </div>
+
+            <!-- PAN -->
+            <div class="mb-3">
+                <label for="pan" class="form-label">PAN Card Number</label>
+                <input type="text" id="pan" maxlength="10" class="form-control"
+                    placeholder="Enter 10-character PAN (e.g., ABCDE1234F)" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" id="phone" maxlength="10" class="form-control"
+                    placeholder="Enter 10-digit phone number" pattern="\d{10}">
+            </div>
+
+            <!-- Address -->
+            <div class="mb-3">
+                <label for="address" class="form-label">Permanent Address</label>
+                <textarea id="address" class="form-control" rows="2"
+                    placeholder="Enter your permanent address"></textarea>
+            </div>
+
+            <!-- Correspondence Address -->
+            <div class="mb-3">
+                <label for="corrAddress" class="form-label">Correspondence Address</label>
+                <textarea id="corrAddress" class="form-control" rows="2"
+                    placeholder="Enter correspondence address"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-cancel" id="cancelBtn">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("profileForm");
+            const cancelBtn = document.getElementById("cancelBtn");
+
+            // Load data if available
+            const userData = JSON.parse(localStorage.getItem("userProfile")) || {};
+
+            document.getElementById("title").value = userData.title || "";
+            document.getElementById("fullName").value = userData.fullName || "";
+            document.getElementById("guardianName").value = userData.guardianName || "";
+            document.getElementById("aadhaar").value = userData.aadhaar || "";
+            document.getElementById("pan").value = userData.pan || "";
+            document.getElementById("email").value = userData.email || "";
+            document.getElementById("phone").value = userData.phone || "";
+            document.getElementById("address").value = userData.address || "";
+            document.getElementById("corrAddress").value = userData.corrAddress || "";
+
+            // Save on Submit
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const profile = {
+                    title: document.getElementById("title").value,
+                    fullName: document.getElementById("fullName").value,
+                    guardianName: document.getElementById("guardianName").value,
+                    aadhaar: document.getElementById("aadhaar").value,
+                    pan: document.getElementById("pan").value,
+                    email: document.getElementById("email").value,
+                    phone: document.getElementById("phone").value,
+                    address: document.getElementById("address").value,
+                    corrAddress: document.getElementById("corrAddress").value
+                };
+
+                localStorage.setItem("userProfile", JSON.stringify(profile));
+                alert("✅ Profile saved successfully!");
+                window.location.href = "dashboard.html";
+            });
+
+            // Cancel button logic
+            cancelBtn.addEventListener("click", () => {
+                if (confirm("Discard changes and go back to dashboard?")) {
+                    window.location.href = "dashboard.html";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
