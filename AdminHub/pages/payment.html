@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="css/pages.css">
+<h1 class="d-flex justify-content-center my-0 py-0"><i class='bx bxs-dollar-circle'></i>Payment Application</h1>
+<style>
+    /* Hide all conditional fields by default */
+    #upiField,
+    #accountField,
+    #ifscField {
+        display: none;
+    }
+
+    /* Show UPI field when selected */
+    .payment-form:has(#paymentType option[value="UPI"]:checked) #upiField {
+        display: block;
+    }
+
+    /* Show Bank Transfer fields when selected */
+    .payment-form:has(#paymentType option[value="Bank Transfer"]:checked) #accountField,
+    .payment-form:has(#paymentType option[value="Bank Transfer"]:checked) #ifscField {
+        display: block;
+    }
+</style>
+
+<div class="d-flex justify-content-center">
+    <div class="profile-card col-md-8 col-sm-12 mt-2">
+        <form id="profileForm" class="payment-form">
+            <div class="mb-3">
+                <label for="paymentType" class="form-label">Select Payment Type</label>
+                <select id="paymentType" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="Cash">Cash</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select>
+            </div>
+
+            <div class="mb-3" id="upiField">
+                <label class="form-label">Enter UPI ID</label>
+                <input type="text" class="form-control" placeholder="Enter UPI ID">
+            </div>
+
+            <div class="mb-3" id="accountField">
+                <label class="form-label">Enter Account Number</label>
+                <input type="number" class="form-control" placeholder="Enter Account Number">
+            </div>
+
+            <div class="mb-3" id="ifscField">
+                <label class="form-label">Enter IFSC Code</label>
+                <input type="text" class="form-control" placeholder="Enter IFSC Code">
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label">Enter Amount</label>
+                <input type="number" id="amount" class="form-control" placeholder="Enter Amount" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Select Date</label>
+                <input type="date" id="date" class="form-control">
+            </div>
+
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <button type="button" class="btn btn-cancel">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

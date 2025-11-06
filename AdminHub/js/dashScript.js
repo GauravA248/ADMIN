@@ -52,28 +52,28 @@ window.addEventListener('resize', function () {
 	}
 })
 
-// const switchMode = document.getElementById('switch-mode');
-
-// switchMode.addEventListener('change', function () {
-// 	if(this.checked) {
-// 		document.body.classList.add('dark');
-// 	} else {
-// 		document.body.classList.remove('dark');
-// 	}
-// })
-
-const body = document.body;
 const switchMode = document.getElementById('switch-mode');
 
-// 1️⃣ Start in dark mode by default
-body.classList.add('dark');
-switchMode.checked = true;
-
-// 2️⃣ Toggle between dark and light
-switchMode.addEventListener('change', () => {
-	if (switchMode.checked) {
-		body.classList.add('dark');   // Dark mode ON
+switchMode.addEventListener('change', function () {
+	if(this.checked) {
+		document.body.classList.add('dark');
 	} else {
-		body.classList.remove('dark'); // Light mode ON
+		document.body.classList.remove('dark');
 	}
-});
+})
+
+// const body = document.body;
+// const switchMode = document.getElementById('switch-mode');
+
+// // 1️⃣ Start in dark mode by default
+// body.classList.add('dark');
+// switchMode.checked = true;
+
+// // 2️⃣ Toggle between dark and light
+// switchMode.addEventListener('change', () => {
+// 	if (switchMode.checked) {
+// 		body.classList.add('dark');   // Dark mode ON
+// 	} else {
+// 		body.classList.remove('dark'); // Light mode ON
+// 	}
+// });

@@ -1,14 +1,58 @@
-const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+// const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
-allSideMenu.forEach(item => {
-    const li = item.parentElement;
+// allSideMenu.forEach(item => {
+//     const li = item.parentElement;
 
-    item.addEventListener('click', function () {
-        allSideMenu.forEach(i => {
-            i.parentElement.classList.remove('active');
-        })
-        li.classList.add('active');
-    })
+//     item.addEventListener('click', function () {
+//         allSideMenu.forEach(i => {
+//             i.parentElement.classList.remove('active');
+//         })
+//         li.classList.add('active');
+//     })
+// });
+// === Dynamic Page Loader ===
+document.addEventListener("DOMContentLoaded", () => {
+    const allLinks = document.querySelectorAll('#sidebar .side-menu.top li a');
+    const dashboardContent = document.getElementById("dashboardContent");
+    const pageContent = document.getElementById("pageContent");
+
+    allLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const page = link.getAttribute("data-page");
+
+            // Remove active class for all
+            allLinks.forEach(i => i.parentElement.classList.remove("active"));
+            link.parentElement.classList.add("active");
+
+            // If Dashboard clicked → show dashboard content
+            if (page === "userDash.html") {
+                dashboardContent.style.display = "block";
+                pageContent.style.display = "none";
+                pageContent.innerHTML = "";
+                return;
+            }
+
+            // Otherwise, load the selected page dynamically
+            dashboardContent.style.display = "none";
+            pageContent.style.display = "block";
+            pageContent.innerHTML = `<p style="text-align:center;padding:30px;">Loading...</p>`;
+
+            fetch(page)
+                .then(res => {
+                    if (!res.ok) throw new Error("Page not found");
+                    return res.text();
+                })
+                .then(html => {
+                    pageContent.innerHTML = html;
+                })
+                .catch(err => {
+                    pageContent.innerHTML = `<p style="color:red;text-align:center;">Failed to load page.</p>`;
+                    console.error(err);
+                });
+        });
+    });
 });
 
 // TOGGLE SIDEBAR
@@ -49,33 +93,43 @@ window.addEventListener('resize', function () {
     }
 })
 
-const body = document.body;
 const switchMode = document.getElementById('switch-mode');
 
-// 1️⃣ Start in dark mode by default
-body.classList.add('dark');
-switchMode.checked = true;
+switchMode.addEventListener('change', function () {
+	if(this.checked) {
+		document.body.classList.add('dark');
+	} else {
+		document.body.classList.remove('dark');
+	}
+})
 
-// 2️⃣ Toggle between dark and light
-switchMode.addEventListener('change', () => {
-    if (switchMode.checked) {
-        body.classList.add('dark');   // Dark mode ON
-    } else {
-        body.classList.remove('dark'); // Light mode ON
-    }
-});
+// const body = document.body;
+// const switchMode = document.getElementById('switch-mode');
+
+// // 1️⃣ Start in dark mode by default
+// body.classList.add('dark');
+// switchMode.checked = true;
+
+// // 2️⃣ Toggle between dark and light
+// switchMode.addEventListener('change', () => {
+//     if (switchMode.checked) {
+//         body.classList.add('dark');   // Dark mode ON
+//     } else {
+//         body.classList.remove('dark'); // Light mode ON
+//     }
+// });
 
 // Date MENU
 function showDateMenu(x, y, dateText) {
-  document.querySelectorAll(".date-menu").forEach(m => m.remove());
+    document.querySelectorAll(".date-menu").forEach(m => m.remove());
 
-  const menu = document.createElement("div");
-  menu.classList.add("date-menu");
+    const menu = document.createElement("div");
+    menu.classList.add("date-menu");
 
-  menu.style.left = `${x}px`;
-  menu.style.top = `${y}px`;
+    menu.style.left = `${x}px`;
+    menu.style.top = `${y}px`;
 
-  menu.innerHTML = `
+    menu.innerHTML = `
     <ul>
       <li><i class='bx bxs-plane-alt'></i> Apply Leave</li>
       <li><i class='bx bxs-log-in-circle'></i> Punch In / Out</li>
@@ -84,15 +138,15 @@ function showDateMenu(x, y, dateText) {
     </ul>
   `;
 
-  document.body.appendChild(menu);
-  console.log("✅ Date menu appended and styled:", dateText);
+    document.body.appendChild(menu);
+    console.log("✅ Date menu appended and styled:", dateText);
 
-  // Close when clicking outside
-  setTimeout(() => {
-    document.addEventListener("click", (e) => {
-      if (!menu.contains(e.target)) menu.remove();
-    }, { once: true });
-  }, 10);
+    // Close when clicking outside
+    setTimeout(() => {
+        document.addEventListener("click", (e) => {
+            if (!menu.contains(e.target)) menu.remove();
+        }, { once: true });
+    }, 10);
 }
 
 // calendr
@@ -383,5 +437,3 @@ document.addEventListener("DOMContentLoaded", () => {
     updateDateTime();
     setInterval(updateDateTime, 1000);
 });
-
-

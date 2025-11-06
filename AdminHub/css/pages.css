@@ -1,0 +1,414 @@
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    background: var(--grey);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==============================
+   HEADER TITLE STYLING
+================================ */
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-top: 30px;
+}
+
+h1 i {
+    font-size: 2.2rem;
+    color: var(--orange);
+}
+
+/* ==============================
+   PROFILE CARD STYLING
+================================ */
+.profile-card {
+    background: var(--light);
+    width: 100%;
+    max-width: 700px;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin: 40px auto;
+    /* ✅ Centers card horizontally */
+}
+
+.profile-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.profile-card h4 {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--blue);
+}
+
+/* ==============================
+   FORM LAYOUT + ALIGNMENT FIX
+================================ */
+form#profileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    /* equal spacing between all fields */
+}
+
+/* Label styling */
+label.form-label {
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 6px;
+    display: block;
+    font-size: 0.95rem;
+}
+
+/* Input + Select + Textarea consistent sizing */
+input.form-control,
+select.form-select,
+textarea.form-control {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    background: #fff;
+    color: var(--dark);
+    padding: 10px 14px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Placeholder text */
+input.form-control::placeholder,
+textarea.form-control::placeholder {
+    color: #aaa;
+    opacity: 0.9;
+}
+
+/* Focus state */
+input.form-control:focus,
+select.form-select:focus,
+textarea.form-control:focus {
+    border-color: var(--blue);
+    background: #fff;
+    color: var(--dark);
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(60, 145, 230, 0.25);
+}
+
+/* Select dropdown arrow customization */
+select.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%236391e6' viewBox='0 0 16 16'%3E%3Cpath d='M3.204 5h9.592L8 10.481 3.204 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    padding-right: 2.5rem;
+}
+
+/* Form group spacing */
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+/* Buttons alignment */
+.d-flex.justify-content-between {
+    gap: 10px;
+}
+
+.btn {
+    flex: 1;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+/* ==============================
+   RESPONSIVE ADJUSTMENTS
+================================ */
+@media (max-width: 768px) {
+    form#profileForm {
+        gap: 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 18px;
+    }
+}
+
+
+/* ==============================
+   FORM INPUT STYLING (ENHANCED)
+================================ */
+input.form-control,
+select.form-select,
+textarea.form-control {
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    background: #fff;
+    color: var(--dark);
+    padding: 10px 14px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+input.form-control::placeholder,
+textarea.form-control::placeholder {
+    color: #aaa;
+    opacity: 0.9;
+}
+
+input.form-control:focus,
+select.form-select:focus,
+textarea.form-control:focus {
+    border-color: var(--blue);
+    background: #fff;
+    color: var(--dark);
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(60, 145, 230, 0.25);
+}
+
+select.form-select {
+    appearance: none;
+    /* Removes default arrow in some browsers */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%236391e6' viewBox='0 0 16 16'%3E%3Cpath d='M3.204 5h9.592L8 10.481 3.204 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    padding-right: 1rem;
+}
+
+/* Small margin between inputs */
+.mb-3 {
+    margin-bottom: 0.5rem !important;
+}
+
+/* ==============================
+   BUTTON STYLING
+================================ */
+.btn {
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--blue);
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #2a75c4;
+}
+
+.btn-cancel {
+    background: var(--light-orange);
+    color: var(--orange);
+    border: none;
+}
+
+.btn-cancel:hover {
+    background: var(--orange);
+    color: var(--light);
+}
+
+.btn-position {
+    display: flex;
+    justify-content: center;
+    /* centers both buttons as a group */
+    align-items: center;
+    gap: 12px;
+    /* spacing between buttons */
+    width: 100%;
+    /* full width of form container */
+    text-align: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    /* ensures they stay responsive */
+}
+
+.btn-position .btn {
+    flex: 0 0 auto;
+    /* prevents stretching/shrinking */
+    min-width: 120px;
+    /* keeps consistent button width */
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================ */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 1.8rem;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-card {
+        margin: 20px;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-card h4 {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        width: 48%;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==============================
+   CUSTOM TABLE STYLING
+================================ */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.custom-table thead {
+    background-color: var(--blue);
+    color: #fff;
+    text-align: center;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 14px 12px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+}
+
+.custom-table tbody tr:hover {
+    background-color: rgba(99, 145, 230, 0.08);
+    transition: background-color 0.3s ease;
+}
+
+/* ==============================
+   RESPONSIVE TABLE STYLING
+================================ */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.custom-table {
+    width: 100%;
+    min-width: 800px;
+    /* ensures proper layout for wide data */
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.custom-table thead {
+    background: var(--blue);
+    color: #fff;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+}
+
+.custom-table th {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.custom-table tr:hover {
+    background: rgba(99, 145, 230, 0.07);
+    transition: background 0.2s ease;
+}
+
+/* Status Badges */
+.status {
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.status.success {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+}
+
+.status.pending {
+    background: rgba(241, 196, 15, 0.15);
+    color: #f1c40f;
+}
+
+.status.failed {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+}
+
+/* ==============================
+   RESPONSIVE BEHAVIOR
+================================ */
+@media (max-width: 992px) {
+    .profile-card {
+        max-width: 95%;
+    }
+
+    .custom-table th,
+    .custom-table td {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .table-responsive {
+        border-radius: 8px;
+    }
+
+    .custom-table {
+        min-width: 600px;
+        /* enable smooth horizontal scroll */
+    }
+}

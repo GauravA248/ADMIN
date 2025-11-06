@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="css/pages.css">
+
+<h1>
+    <i class='bx bxs-calendar-check'></i>Attendace Status
+</h1>
+
+<style>
+    .profile-card {
+        max-width: 100vw !important;
+        margin-top: 0px;
+        padding: 2%;
+        padding-top: 1%;
+    }
+</style>
+
+<div class="profile-card">
+    <div class="table-responsive">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Leave Date</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2025-11-01 to 2025-11-03</td>
+                    <td>2025-10-30</td>
+                    <td><span class="status success">Approved</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2025-11-10 to 2025-11-11</td>
+                    <td>2025-11-08</td>
+                    <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2025-10-25 to 2025-10-26</td>
+                    <td>2025-10-20</td>
+                    <td><span class="status failed">Rejected</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -8,6 +8,7 @@
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- My CSS -->
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/userStyle.css">
 </head>
 
@@ -20,37 +21,37 @@
         </a>
         <ul class="side-menu top">
             <li class="active">
-                <a href="#">
+                <a href="#" data-page="userDash.html">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="pages/profile.html">
+                <a href="#" data-page="pages/profile.html">
                     <i class='bx bxs-shopping-bag-alt'></i>
                     <span class="text">My Profile</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#" data-page="pages/payment.html">
                     <i class='bx bxs-doughnut-chart'></i>
                     <span class="text">Payement Process</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#" data-page="pages/transaction.html">
                     <i class='bx bxs-doughnut-chart'></i>
                     <span class="text">Transaction History</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#" data-page="pages/attendance.html">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">Attendance</span>
                 </a>
             </li>
         </ul>
-        <ul class="side-menu">
+        <ul class="side-menu top">
             <li>
                 <a href="#">
                     <i class='bx bxs-cog'></i>
@@ -93,83 +94,85 @@
 
         <!-- MAIN -->
         <main>
-            <div class="head-title">
-                <div class="left">
-                    <h1>Dashboard</h1>
-                    <ul class="breadcrumb">
-                        <li>
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li><i class='bx bx-chevron-right'></i></li>
-                        <li>
-                            <a class="active" href="#">Home</a>
-                        </li>
-                    </ul>
-                </div>
-                <a href="#" class="btn-download">
-                    <i class='bx bxs-cloud-download'></i>
-                    <span class="text">Download PDF</span>
-                </a>
-            </div>
-
-            <ul class="box-info">
-                <li>
-                    <i class='bx bxs-calendar-check'></i>
-                    <span class="text">
-                        <h3>1020</h3>
-                        <p>Leave Status</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-group'></i>
-                    <span class="text">
-                        <h3>2834</h3>
-                        <p>Current Location</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-dollar-circle'></i>
-                    <span class="text">
-                        <h3>$2543</h3>
-                        <p>Pending Task</p>
-                    </span>
-                </li>
-            </ul>
-
-            <div class="table-data">
-                <div class="order calendar-container">
-                    <div id="calendar"></div>
+            <div id="dashboardContent">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Dashboard</h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">Dashboard</a>
+                            </li>
+                            <li><i class='bx bx-chevron-right'></i></li>
+                            <li>
+                                <a class="active" href="#">Home</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Download PDF</span>
+                    </a> -->
                 </div>
 
-                <div class="attendance-section">
-                    <div class="head">
-                        <h3>Attendance</h3>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-calendar-check'></i>
+                        <span class="text">
+                            <h3>1020</h3>
+                            <p>Leave Status</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Current Location</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle'></i>
+                        <span class="text">
+                            <h3>$2543</h3>
+                            <p>Pending Task</p>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="table-data">
+                    <div class="order calendar-container">
+                        <div id="calendar"></div>
                     </div>
 
-                    <div class="punch-container">
-                        <div class="time-display">
-                            <h4 id="currentTime">--:--:--</h4>
-                            <p id="currentDate">-- -- ----</p>
+                    <div class="attendance-section">
+                        <div class="head">
+                            <h3>Attendance</h3>
                         </div>
 
-                        <div class="buttons">
-                            <button id="punchInBtn" class="punch-btn punch-in">
-                                <i class='bx bx-log-in-circle'></i> Punch In
-                            </button>
-                            <button id="punchOutBtn" class="punch-btn punch-out" disabled>
-                                <i class='bx bx-log-out-circle'></i> Punch Out
-                            </button>
-                        </div>
+                        <div class="punch-container">
+                            <div class="time-display">
+                                <h4 id="currentTime">--:--:--</h4>
+                                <p id="currentDate">-- -- ----</p>
+                            </div>
 
-                        <div class="punch-info">
-                            <p id="punchInTime">Punch In Time: --</p>
-                            <p id="punchOutTime">Punch Out Time: --</p>
-                            <p id="locationInfo"></p>
+                            <div class="buttons">
+                                <button id="punchInBtn" class="punch-btn punch-in">
+                                    <i class='bx bx-log-in-circle'></i> Punch In
+                                </button>
+                                <button id="punchOutBtn" class="punch-btn punch-out" disabled>
+                                    <i class='bx bx-log-out-circle'></i> Punch Out
+                                </button>
+                            </div>
+
+                            <div class="punch-info">
+                                <p id="punchInTime">Punch In Time: --</p>
+                                <p id="punchOutTime">Punch Out Time: --</p>
+                                <p id="locationInfo"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div id="pageContent" style="display: none;"></div>
         </main>
         <!-- MAIN -->
     </section>
@@ -178,6 +181,7 @@
     <script src="js/userDash.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/logout.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 

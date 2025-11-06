@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="css/pages.css">
+
+<h1>
+    <i class='bx bxs-dollar-circle'></i>Transaction Status
+</h1>
+
+<style>
+    .profile-card {
+        max-width: 100vw !important;
+        margin-top: 0px;
+        padding: 2%;
+        padding-top: 1%;
+    }
+</style>
+
+<div class="profile-card">
+    <div class="table-responsive">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Request Date</th>
+                    <th>Amount</th>
+                    <th>Payment Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2025-11-06</td>
+                    <td>₹2,000</td>
+                    <td>UPI</td>
+                    <td><span class="status success">Completed</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2025-11-05</td>
+                    <td>₹1,500</td>
+                    <td>Bank Transfer</td>
+                    <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2025-11-03</td>
+                    <td>₹3,200</td>
+                    <td>Cash</td>
+                    <td><span class="status failed">Failed</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
